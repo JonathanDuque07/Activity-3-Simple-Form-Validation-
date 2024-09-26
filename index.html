@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Formulario</title>
+    <style>
+        /* Estilo general del cuerpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Estilo para el contenedor del formulario */
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        /* Título del formulario */
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para los campos de entrada */
+        input {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Botón de envío */
+        button {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Mensaje de error */
+        .error {
+            color: palevioletred;
+            font-size: 14px;
+            display: none;
+            margin-bottom: 15px;
+        }
+
+    </style>
+    <script>
+        // Función que valida el formulario
+        function validarFormulario(event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            const nombre = document.getElementById('nombre').value;
+            const mensajeError = document.getElementById('noname');
+
+            // Verifica si el campo de nombre está vacío
+            if (nombre.trim() === "") {
+                mensajeError.style.display = 'block'; // Muestra el mensaje de error
+            } else {
+                mensajeError.style.display = 'none'; // Oculta el mensaje de error
+                alert("Formulario enviado correctamente");
+                // Aquí puedes agregar el código para enviar el formulario
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <form onsubmit="validarFormulario(event)">
+            <h2>Registro</h2>
+            <!-- Campo de nombre -->
+            <input type="text" id="nombre" placeholder="Introduce tu nombre">
+            <!-- Mensaje de error si el campo está vacío -->
+            <p id="noname" class="error">El campo de nombre no puede estar vacío.</p>
+            <!-- Botón para enviar el formulario -->
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
